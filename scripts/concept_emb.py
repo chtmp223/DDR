@@ -56,8 +56,8 @@ def main():
     model, vocab, dim = load_pretrained_model(model_path, model_type, model_format)
     concept, oov = concept_emb(seed_path, model, vocab, dim)
 
-    concept_df = pd.DataFrame(concept).to_csv(term_output_path, index=False, header=False)
-    oov_df = pd.DataFrame(oov).to_csv(oov_output_path, index=False, header=False)
+    concept_df = pd.DataFrame(concept).to_csv(term_output_path, index=False)
+    oov_df = pd.DataFrame(oov).to_csv(oov_output_path, index=False)
 
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@
 
 import sys
 import numpy as np
+import gensim
 from gensim.models import KeyedVectors as kv
 import io
 
@@ -33,8 +34,11 @@ def load_word2vec(model_path, binary):
     Return a dictionary {word: embedding}, a list of words,
     and the embedding dimension
     '''
-    model = kv.load_word2vec_format(model_path, binary)
-    return model, model.vector_size, set(model.index2word)
+    model = kv.load_word2vec_format(model_path, binary=binary)
+    if gensim.__version__ < '4.0.0':
+        return model, set(model.index2word), model.vector_size
+    else: 
+        return model, set(model.index_to_key), model.vector_size
     
 
 def load_fasttext(model_path, binary):

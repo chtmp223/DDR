@@ -15,7 +15,7 @@ Currently, this package requires an installation of python 3, as well as the fol
 numpy
 nltk
 pandas
-gensim (>= 3.0.0)
+gensim (>= 4.0.0)
 ```
 To install these dependencies, you can use the following command: `pip install -r requirements.txt`
 
