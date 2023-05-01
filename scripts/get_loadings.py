@@ -31,11 +31,18 @@ def main():
     doc_path = sys.argv[5]
     output_path = sys.argv[6]
 
+    # Getting results ----
     model, vocab, dim = load_pretrained_model(model_path, model_type, model_format)
     doc, oov_doc = doc_emb(doc_path, model, vocab, dim)
     concept, oov_concept = concept_emb(seed_path, model, vocab, dim)
     similarity = get_loadings(doc, concept)
-    similarity_df = pd.DataFrame(similarity).to_csv(output_path, index=False, header=False)
+
+    # Writing results ----
+    pd.DataFrame(doc).to_csv(output_path + "doc_emb.csv", index=False)
+    pd.DataFrame(concept).to_csv(output_path + "concept_emb.csv", index=False)
+    pd.DataFrame(oov_doc).to_csv(output_path + "oov_doc.csv", index=False)
+    pd.DataFrame(oov_concept).to_csv(output_path + "oov_concept.csv", index=False)
+    pd.DataFrame(similarity).to_csv(output_path + "loadings.csv", index=False)
 
     print("Finished calculating loadings!")
 

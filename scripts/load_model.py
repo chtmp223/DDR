@@ -19,7 +19,7 @@ def load_glove(model_path):
     embeddings = {}
     with open(model_path, 'r') as f: 
         for line in f: 
-            values = line.split() 
+            values = line.split(' ') 
             word = values[0] 
             coefs = np.asarray(values[1:], dtype='float32') 
             embeddings[word] = coefs

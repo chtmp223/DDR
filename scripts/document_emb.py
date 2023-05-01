@@ -43,8 +43,8 @@ def main():
     model, vocab, dim = load_pretrained_model(model_path, model_type, model_format)
     doc, oov = doc_emb(doc_path, model, vocab, dim)
 
-    doc_df = pd.DataFrame(doc).to_csv(doc_output_path, index=False, header=False)
-    oov_df = pd.DataFrame(oov).to_csv(oov_output_path, index=False, header=False)
+    doc_df = pd.DataFrame(doc).to_csv(doc_output_path, index=False)
+    oov_df = pd.DataFrame(oov).to_csv(oov_output_path, index=False)
 
 
 if __name__ == "__main__":
